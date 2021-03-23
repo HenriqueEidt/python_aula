@@ -7,7 +7,7 @@ import plotly.express as px
 import pandas as pd
 import statistics
 
-#teste
+#tes
 
 B1 = []
 B2 = []
