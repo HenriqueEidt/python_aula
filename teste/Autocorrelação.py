@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from matplotlib import style
 
+#TESTANDEDQWEDQPEWOD
+
 
 #Pega automaticamente todos os dados das ações e índices do yahoo finance para as datas em questão
 df = wb.DataReader(['^BVSP','CYRE3.SA','EZTC3.SA','JHSF3.SA','TRIS3.SA','ITSA3.SA','DIRR3.SA','EVEN3.SA'],'yahoo',start = '01/01/2019', end = '12/31/2019')
