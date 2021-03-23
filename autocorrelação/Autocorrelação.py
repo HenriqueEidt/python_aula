@@ -67,7 +67,7 @@ res_even3 = mod_even3.fit()
 print(res_even3.summary())
 
 
-#Cria uma lista com as datas do DataFrame convertidas para o formato matplotlib
+#Cria uma lista com as datas do DataFrame convertidas para o formato datetime, matplotlib não entende string
 dates = df.index.tolist()
 dates = [pd.to_datetime(d) for d in dates]
 
