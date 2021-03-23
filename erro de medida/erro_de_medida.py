@@ -7,7 +7,6 @@ import plotly.express as px
 import pandas as pd
 import statistics
 
-#tes
 
 B1 = []
 B2 = []
@@ -287,10 +286,6 @@ print(statistics.stdev(B3))
 print(min(B3))
 print(max(B3))
 print('---------------------------------------------------------------------------------------')
-
-
-
-
 
 
 
