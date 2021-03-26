@@ -1,48 +1,61 @@
-from numpy.core.defchararray import index
-import pandas as pd
-import pandas_datareader as web
 import numpy as np
-import statsmodels.api as sm
-from statsmodels.regression.linear_model import OLS
+import pandas_datareader as web
+import pandas as pd
+import statsmodels.api as  sm
 
-ativos = ['^BVSP','JBSS3.sa','BRFS3.sa','MRFG3.sa','BEEF3.sa']
 
-fase_1_start = '02-7-2017'
-fase_1_end = '03-18-2021'
 
-fase_2_start = '04-21-2017'
-fase_2_end = '05-31-2017'
 
-fase_3_start = '03-25-2018'
-fase_3_end = '05-05-2018'
+antes_inicio_1 = '01-17-2017'
+antes_fim_1 = '03-16-2017'
 
-def preço_primeira_parte():
-    df = web.DataReader(ativos,'yahoo',start=fase_1_start,end=fase_1_end)
-    df = df['Adj Close']
+dps_inicio_1 = '03-18-2017'
+dps_fim_1 = '05-18-2017'
+
+
+
+
+antes_inicio_2 = '03-30-2017'
+antes_fim_2 = '05-30-2017'
+
+dps_inicio_2 = '06-01-2017'
+dps_fim_2 = '07-30-2017'
+
+
+
+
+antes_inicio_3 = '06-04-2018'
+antes_fim_3 = '07-31-2018'
+
+dps_inicio_3 = '08-06-2018'
+dps_fim_3 = '10-03-2018'
+
+
+
+
+ativos=['^BVSP','BRFS3.sa','MRFG3.sa','JBSS3.sa','BEEF3.sa']
+
+def estudo_retorno(ativo,data_inicio,data_fim,coluna):
+
+    df = web.DataReader(['^BVSP','BRFS3.sa','MRFG3.sa','JBSS3.sa','BEEF3.sa'],'yahoo',start=data_inicio,end=data_fim)
+    df = df[coluna]
     
+    df = df.dropna()
+
+
     for i in ativos:
-        df.insert(loc = ativos.index(i),column='ln{}'.format(i),value = np.log(df[i]/df[i].shift()))
-        df = df.iloc[1:]
+        df.insert(loc = ativos.index(i), column = 'ln{}'.format(i), value = np.log(df[i]/df[i].shift()))
 
-        ibov = sm.add_constant(df['ln^BVSP'])
-        mod = sm.OLS(endog=df['ln{}'.format(i)],exog= ibov)
-        res = mod.fit()
-        print(res.summary())
+    df = df.iloc[1:]
 
-
-def volum_primeira_parte():
-    df = web.DataReader(ativos,'yahoo',start='02-7-2017',end='03-18-2017')
-    df = df['Volume']
+    #print(df)
     
-    for i in ativos:
-        df.insert(loc = ativos.index(i),column='ln_vol{}'.format(i),value = np.log(df[i]/df[i].shift()))
-        df = df.iloc[1:]
+    ibov = sm.add_constant(df['ln^BVSP'])
+    mod = sm.OLS(endog=df[ativo],exog= ibov)
+    res = mod.fit()
+    print(res.summary())
 
-        ibov = sm.add_constant(df['ln_vol^BVSP'])
-        mod = sm.OLS(endog=df['ln_vol{}'.format(i)],exog= ibov)
-        res = mod.fit()
-        print(res.summary())
-    print(df)
+    df.to_csv('preços.csv')
 
-volum_primeira_parte()
 
+estudo_retorno('lnBEEF3.sa',antes_inicio_3,antes_fim_3,coluna='Close')
