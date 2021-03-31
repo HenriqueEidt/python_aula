@@ -3,9 +3,6 @@ import pandas_datareader as web
 import pandas as pd
 import statsmodels.api as  sm
 
-
-
-
 antes_inicio_1 = '01-16-2017'
 antes_fim_1 = '03-16-2017'
 
@@ -14,22 +11,19 @@ dps_fim_1 = '05-18-2017'
 
 
 
-
 antes_inicio_2 = '03-28-2017'
 antes_fim_2 = '05-30-2017'
 
-dps_inicio_2 = '06-01-2017'
+dps_inicio_2 = '05-31-2017'
 dps_fim_2 = '07-30-2017'
 
 
 
+antes_inicio_3 = '12-28-2017'
+antes_fim_3 = '03-04-2018'
 
-antes_inicio_3 = '05-30-2018'
-antes_fim_3 = '07-31-2018'
-
-dps_inicio_3 = '08-02-2018'
-dps_fim_3 = '10-03-2018'
-
+dps_inicio_3 = '03-05-2018'
+dps_fim_3 = '05-03-2018'
 
 
 
@@ -57,16 +51,6 @@ def estudo_retorno(data_inicio,data_fim):
 
 
     df.to_csv('preços.csv')
-
-
-#estudo_retorno(dps_inicio_1,dps_fim_1)
-
-
-
-
-
-
-
 
 
 
@@ -98,3 +82,5 @@ def estudo_volume(data_inicio,data_fim):
     df.to_csv('volume.csv')
 
 estudo_volume(data_inicio = dps_inicio_3, data_fim = dps_fim_3)
+
+
