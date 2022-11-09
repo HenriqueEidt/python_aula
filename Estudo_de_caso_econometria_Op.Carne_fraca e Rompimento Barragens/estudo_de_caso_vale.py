@@ -77,3 +77,4 @@ def volume_vale(data_inicio,data_fim):
     df.to_csv('volume_vale.csv')
 
 volume_vale(dps_inicio_brumadinho,dps_fim_brumandinho)
+

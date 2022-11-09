@@ -31,7 +31,7 @@ ativos=['^BVSP','BRFS3.sa','MRFG3.sa','JBSS3.sa','BEEF3.sa']
 
 def estudo_retorno(data_inicio,data_fim):
     df = web.DataReader(['^BVSP','BRFS3.sa','MRFG3.sa','JBSS3.sa','BEEF3.sa'],'yahoo',start=data_inicio,end=data_fim)
-    df = df[df["Volume"]>0]
+    #df = df[df["Volume"]>0]
     df = df['Close']
 
     df = df.dropna()
@@ -52,7 +52,7 @@ def estudo_retorno(data_inicio,data_fim):
 
     df.to_csv('preços.csv')
 
-
+estudo_retorno(dps_inicio_2,dps_fim_2)
 
 
 
@@ -81,6 +81,7 @@ def estudo_volume(data_inicio,data_fim):
 
     df.to_csv('volume.csv')
 
-estudo_volume(data_inicio = dps_inicio_3, data_fim = dps_fim_3)
 
 
+
+estudo_volume(dps_inicio_3,dps_fim_3)
